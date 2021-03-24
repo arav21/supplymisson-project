@@ -71,15 +71,18 @@ function draw() {
  
   packageSprite.x= packageBody.position.x 
   packageSprite.y= packageBody.position.y 
-  if (keyDown("down arrow")){
-	packageSprite=createSprite(width/2, 80, 10,10);
-	packageSprite.addImage(packageIMG)
-	packageSprite.scale=0.2
-  }
+  
 
   
   drawSprites();
   
   
  
+}
+function keyPressed(){
+	if (keyDown("down arrow")){
+		packageSprite=createSprite(width/2, 80, 10,10);
+		packageSprite.addImage(packageIMG);
+		packageSprite.scale=0.2
+	  }
 }
