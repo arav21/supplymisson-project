@@ -40,6 +40,9 @@ function setup() {
  	boxPosition=width/2-100
  	boxY=610;
 
+	packageSprite=createSprite(width/2, 80, 10,10);
+	packageSprite.addImage(packageIMG);
+	packageSprite.scale=0.2
 
  	boxleftSprite=createSprite(boxPosition, boxY, 20,100);
  	boxleftSprite.shapeColor=color(255,0,0);
@@ -76,13 +79,17 @@ function draw() {
   
   drawSprites();
   
-  
+
  
 }
 function keyPressed(){
-	if (keyDown("down arrow")){
-		packageSprite=createSprite(width/2, 80, 10,10);
-		packageSprite.addImage(packageIMG);
-		packageSprite.scale=0.2
-	  }
+		if(keyCode===LEFT_ARROW){
+		helicopterSprite.x=helicopterSprite.x-20;
+		}
+		if(keyCode===RIGHT_ARROW){
+			helicopterSprite.x=helicopterSprite.x+20;
+		}
+		if(keyCode===DOWN_ARROW){
+			Matter.Body.setStatic(packageBody,false)
+		}
 }
