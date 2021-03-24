@@ -1,3 +1,4 @@
+// Supply Mission
 var helicopterIMG, helicopterSprite, packageSprite,packageIMG;
 var packageBody,ground
 const Engine = Matter.Engine;
@@ -7,15 +8,13 @@ const Body = Matter.Body;
 
 function preload()
 {
-	helicopterIMG=loadImage("helicopter.png")
-	packageIMG=loadImage("package.png")
+	helicopterIMG=loadImage("helicopter.png");
+	packageIMG=loadImage("package.png");
 }
 
 function setup() {
 	createCanvas(800, 700);
 	rectMode(CENTER);
-	
-
 	
 
 	helicopterSprite=createSprite(width/2, 200, 10,10);
@@ -40,9 +39,12 @@ function setup() {
  	boxPosition=width/2-100
  	boxY=610;
 
+	 // Create package
 	packageSprite=createSprite(width/2, 80, 10,10);
 	packageSprite.addImage(packageIMG);
 	packageSprite.scale=0.2
+	packageSprite.visible=false;
+	packageSprite.x = World.helicopterSprite;
 
  	boxleftSprite=createSprite(boxPosition, boxY, 20,100);
  	boxleftSprite.shapeColor=color(255,0,0);
@@ -63,6 +65,7 @@ function setup() {
  	World.add(world, boxRightBody);
 
 
+	 // run the engine
 	Engine.run(engine);
   
 }
@@ -82,6 +85,7 @@ function draw() {
 
  
 }
+// Created function KeyPressed
 function keyPressed(){
 		if(keyCode===LEFT_ARROW){
 		helicopterSprite.x=helicopterSprite.x-20;
@@ -91,5 +95,6 @@ function keyPressed(){
 		}
 		if(keyCode===DOWN_ARROW){
 			Matter.Body.setStatic(packageBody,false)
+			packageSprite.visible=true;
 		}
 }
